@@ -1,0 +1,91 @@
+export const weeklyOpeningTimesGender1 = [
+        {
+            dayName: 'Monday',
+            dayNumber: 1,
+            open: true,
+            openTime: '9:00',
+            closeTime: '16:00',
+        },
+        {
+            dayName: 'Tuesday',
+            dayNumber: 2,
+            open: true,
+            openTime: '9:00',
+            closeTime: '16:00',
+        },
+        {
+            dayName: 'Wednesday',
+            dayNumber: 3,
+            open: true,
+            openTime: '9:00',
+            closeTime: '16:00',
+        },
+        {
+            dayName: 'Thursday',
+            dayNumber: 4,
+            open: true,
+            openTime: '9:00',
+            closeTime: '16:00',
+        },
+        {
+            dayName: 'Friday',
+            dayNumber: 5,
+            open: true,
+            openTime: '9:00',
+            closeTime: '16:00',
+        },
+        {
+            dayName: 'Saturday',
+            dayNumber: 6,
+            open: true,
+            openTime: '9:00',
+            closeTime: '12:00',
+        },
+        { dayName: 'Sunday', dayNumber: 0, open: false },
+]
+
+export const weeklyOpeningTimesGender2 = [
+    {
+        dayName: 'Monday',
+        dayNumber: 1,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    {
+        dayName: 'Tuesday',
+        dayNumber: 2,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    {
+        dayName: 'Wednesday',
+        dayNumber: 3,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    {
+        dayName: 'Thursday',
+        dayNumber: 4,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    {
+        dayName: 'Friday',
+        dayNumber: 5,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    {
+        dayName: 'Saturday',
+        dayNumber: 6,
+        open: true,
+        openTime: '9:00',
+        closeTime: '16:00',
+    },
+    { dayName: 'Sunday', dayNumber: 0, open: false },
+]
