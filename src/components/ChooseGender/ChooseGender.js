@@ -1,7 +1,13 @@
+// External, react, library, etc imports
 import React, { useContext } from 'react';
 
+// Internal global, context, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 import { GenderDataContext } from '../genderContext/genderDataContext.js';
+
+// Website, function/hooks, etc imports
+// NA ATM
+
 
 const ChooseGender = () => {
 	const { genderData } = useContext(GenderDataContext);

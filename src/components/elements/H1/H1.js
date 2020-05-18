@@ -1,5 +1,14 @@
+// External, react, library, etc imports
 import React from 'react';
 import styled from 'styled-components';
+
+// Internal global, context, etc
+// NA ATM
+
+// Website, function/hooks, etc imports
+// NA ATM
+
+
 
 const H1Style = styled.h1`
 	font-size: 50px;

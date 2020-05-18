@@ -1,7 +1,13 @@
+// External, react, library, etc imports
 import React, { useContext, useEffect, useState } from 'react';
+
+// Internal global, context, etc
 import { GenderDataContext } from '../genderContext/genderDataContext';
 import datesWithAlternateOpeningTimes from './data/changedOpeningTimes';
 import {momentDayToday, momentDateToday, momentDateIn7Days} from '../../libraries/moment/moment';
+
+// Website, function/hooks, etc imports
+// NA ATM
 
 const WeeklyOpeningTimes = () => {
 	const { currentGenderData } = useContext(GenderDataContext);
@@ -10,20 +16,40 @@ const WeeklyOpeningTimes = () => {
     useEffect(() => {
         const getAlternativeTimesForTheFollowing7Days = () => {
             const alternativeOpeningTimesThisWeek = [];
-            if (currentGenderData) {
-                if (datesWithAlternateOpeningTimes) {
 
-                    // warning here .map wants a return value. .each has been tried but breaks.
-                    datesWithAlternateOpeningTimes.map((dateWithChangedOpeningTimes, i) => {
+            // ES6 short as fuck
+            currentGenderData && datesWithAlternateOpeningTimes && 
+                datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => 
+                    momentDateToday <= dateWithChangedOpeningTimes.date && momentDateIn7Days > dateWithChangedOpeningTimes.date && dateWithChangedOpeningTimes.gender === currentGenderData.id && 
+                        alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
+                )
 
-                        if ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) {
-                            alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes);
-                        }
-
-                    });
-                }
-            }
-            return alternativeOpeningTimesThisWeek;
+            // // ES6 short as I could
+            // (currentGenderData && datesWithAlternateOpeningTimes ) && 
+            //     datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
+            //         ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) && 
+            //             alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
+            //     })
+            
+            // // ES6 readable
+            // (currentGenderData && datesWithAlternateOpeningTimes ) && (
+            //     datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
+            //         ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) && (
+            //             alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
+            //         )
+                       
+            //     })
+            // )
+            
+            // // Normal
+            // if (currentGenderData && datesWithAlternateOpeningTimes) {
+            //         datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
+            //             if ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) {
+            //                 alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes);
+            //             }
+            //         });
+            // }
+            // return alternativeOpeningTimesThisWeek;
         }
 
         const setNewWeekCalendar = () => {

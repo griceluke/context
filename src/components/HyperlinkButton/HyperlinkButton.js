@@ -1,8 +1,14 @@
+// Eximport React from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+// Iternal, react, library, etc imports
 import colors from '../../styles/colors';
+
+// Website, function/hooks, etc imports
+// NA ATM
+
 
 const A = styled.a`
 	background: ${colors.primary};

@@ -1,10 +1,12 @@
-// External imports
+// External, react, library, etc imports
 import React from 'react';
 import styled from 'styled-components';
 
-// Internal global imports inlcluding external imports within them
+// Internal global, context, etc
+// NA ATM
 
-// Website imports
+// Website, function/hooks, etc imports
+// NA ATM
 
 const Root = styled.div`
 	background: red;

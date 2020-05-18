@@ -1,14 +1,15 @@
-// External imports
+// External, react, library, etc imports
 import React from 'react';
 
-// Internal global imports inlcluding external imports within them
+// Internal global, context, etc
 import { GenderProvider } from '../genderContext/genderContext';
 import { GenderDataProvider } from '../genderContext/genderDataContext';
 
-// Website imports
+// Website, function/hooks, etc imports
 import SetScreens from '../SetScreens';
 import './App.css';
 import './reset.css';
+
 
 function App() {
 	return (

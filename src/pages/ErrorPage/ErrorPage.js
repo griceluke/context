@@ -1,9 +1,11 @@
-// External imports
+// External, react, library, etc imports
 import React from 'react';
 
-// Internal global imports inlcluding external imports within them
+// Internal global, context, etc
 
-// Website imports
+
+// Website, function/hooks, etc imports
+
 
 function ErrorPage() {
 	return (

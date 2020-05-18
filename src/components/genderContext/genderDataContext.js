@@ -1,5 +1,10 @@
+// External, react, library, etc imports
 import React, { useState, useEffect, createContext, useContext } from 'react';
+
+// Internal global, context, etc
 import { GenderContext } from '../../components/genderContext/genderContext.js';
+
+// Website, function/hooks, etc imports
 import _genderData from './genderData';
 
 export const GenderDataContext = createContext();

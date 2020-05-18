@@ -1,13 +1,14 @@
-// External imports
+// External, react, library, etc imports
 import React, { useContext } from 'react';
 
-// Internal global imports inlcluding external imports within them
+// Internal global, context, etc
 import { GenderDataContext } from '../../components/genderContext/genderDataContext';
 
-// Website imports
+// Website, function/hooks, etc imports
 import ToggleGender from '../../components/ToggleGender';
 import ClearGender from '../../components/ClearGender';
 import WeeklyOpeningTimes from '../../components/WeeklyOpeningTimes';
+
 
 function HomePage() {
 	const { currentGenderData } = useContext(GenderDataContext);

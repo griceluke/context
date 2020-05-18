@@ -1,8 +1,17 @@
+// External, react, library, etc imports
 import React from 'react';
 import { Grid as _Grid } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+// Internal global, context, etc
 import breakpoints from '../../styles/breakpoints';
+
+// Website, function/hooks, etc imports
+// NA ATM
+
+
+
+
 
 const Grid = styled(_Grid)`
 	@media (min-width: ${breakpoints.smUp}) {

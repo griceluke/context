@@ -1,11 +1,11 @@
-// External imports
+// External, react, library, etc imports
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// Internal global imports inlcluding external imports within them
+// Internal global, context, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website imports
+// Website, function/hooks, etc imports
 import '../App/App.css';
 import '../App/reset.css';
 import pages from '../../pages';
