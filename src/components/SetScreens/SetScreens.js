@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Internal global, context, etc
-import { GenderContext } from '../genderContext/genderContext.js';
+import { GenderDataContext } from '../genderContext/genderDataContext.js';
 
 // Website, function/hooks, etc imports
 import '../App/App.css';
@@ -13,7 +13,7 @@ import Layout from '../../components/Layout';
 import ChooseGender from '../ChooseGender';
 
 function SetScreens() {
-	const { currentGender } = useContext(GenderContext);
+	const { currentGender } = useContext(GenderDataContext);
 
 	return (
 		<>

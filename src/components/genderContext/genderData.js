@@ -2,11 +2,16 @@
 // NA ATM
 
 // Internal global, context, etc
-import {weeklyOpeningTimesGender1, weeklyOpeningTimesGender2} from '../WeeklyOpeningTimes/data/openingTimes';
+import {OPENING_TIMES_GENDER_1_DATA, OPENING_TIMES_GENDER_2_DATA} from '../WeeklyOpeningTimes/data/openingTimes';
 
 // Website, function/hooks, etc imports
 // NA ATM
 
+export const DEFAULT_GENDER = null;
+
+export const MALE_GENDER = 1;
+
+export const FEMALE_GENDER = 2;
 
 export default [
     {
@@ -15,7 +20,7 @@ export default [
     name: 'gents',
     nameCap: 'Gents',
     salonType: 'barbers',
-    openingTimes: weeklyOpeningTimesGender1,
+    openingTimes: OPENING_TIMES_GENDER_1_DATA,
     },
     {
         id: 2,
@@ -23,6 +28,6 @@ export default [
         name: 'ladies',
         nameCap: 'Ladies',
         salonType: 'salon',
-        openingTimes: weeklyOpeningTimesGender2,
+        openingTimes: OPENING_TIMES_GENDER_2_DATA,
     }
 ]

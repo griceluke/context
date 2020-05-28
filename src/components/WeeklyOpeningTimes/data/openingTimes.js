@@ -1,4 +1,4 @@
-export const weeklyOpeningTimesGender1 = [
+export const OPENING_TIMES_GENDER_1_DATA = [
         {
             dayName: 'Monday',
             dayNumber: 1,
@@ -44,7 +44,7 @@ export const weeklyOpeningTimesGender1 = [
         { dayName: 'Sunday', dayNumber: 0, open: false },
 ]
 
-export const weeklyOpeningTimesGender2 = [
+export const OPENING_TIMES_GENDER_2_DATA = [
     {
         dayName: 'Monday',
         dayNumber: 1,

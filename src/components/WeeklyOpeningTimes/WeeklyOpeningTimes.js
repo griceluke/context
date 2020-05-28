@@ -1,92 +1,63 @@
 // External, react, library, etc imports
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext';
-import datesWithAlternateOpeningTimes from './data/changedOpeningTimes';
+import {CHANGED_OPENING_TIMES_DATA} from './data/changedOpeningTimes';
 import {momentDayToday, momentDateToday, momentDateIn7Days} from '../../libraries/moment/moment';
 
 // Website, function/hooks, etc imports
-// NA ATM
+import OpeningTimesByDay from '../OpeningTimesByDay';
 
-const WeeklyOpeningTimes = () => {
-	const { currentGenderData } = useContext(GenderDataContext);
+const getAlternativeTimesForTheFollowing7Days = (genderDataForCalendar) => {
+    const alternativeOpeningTimesThisWeek = [];
+
+    (genderDataForCalendar && CHANGED_OPENING_TIMES_DATA ) && (
+        CHANGED_OPENING_TIMES_DATA.forEach((dateWithCHANGED_OPENING_TIMES_DATA, i) => {
+            ((momentDateToday <= dateWithCHANGED_OPENING_TIMES_DATA.date) && (momentDateIn7Days > dateWithCHANGED_OPENING_TIMES_DATA.date) && (dateWithCHANGED_OPENING_TIMES_DATA.gender === genderDataForCalendar.id)) && (
+                alternativeOpeningTimesThisWeek.push(dateWithCHANGED_OPENING_TIMES_DATA)
+            )
+               
+        })
+    )
+    return alternativeOpeningTimesThisWeek;
+}
+
+const setNewWeekCalendar = (genderDataForCalendar) => {
+    const alternativeOpeningTimesThisWeek = getAlternativeTimesForTheFollowing7Days(genderDataForCalendar);
+    if (alternativeOpeningTimesThisWeek.length > 0 ) {
+        if (genderDataForCalendar) {
+            const originalOpeningTimes = genderDataForCalendar.openingTimes;
+            return originalOpeningTimes.map(obj => alternativeOpeningTimesThisWeek.find(o => o.dayNumber === obj.dayNumber) || obj);
+        }
+    }
+    if (genderDataForCalendar) {
+        return genderDataForCalendar.openingTimes;
+    }
+}
+
+const WeeklyOpeningTimes = ({genderDataForCalendar, className}) => {
     const [weekCalendar, setWeekCalendar] = useState([]);
 
     useEffect(() => {
-        const getAlternativeTimesForTheFollowing7Days = () => {
-            const alternativeOpeningTimesThisWeek = [];
-
-            // ES6 short as fuck
-            currentGenderData && datesWithAlternateOpeningTimes && 
-                datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => 
-                    momentDateToday <= dateWithChangedOpeningTimes.date && momentDateIn7Days > dateWithChangedOpeningTimes.date && dateWithChangedOpeningTimes.gender === currentGenderData.id && 
-                        alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
-                )
-
-            // // ES6 short as I could
-            // (currentGenderData && datesWithAlternateOpeningTimes ) && 
-            //     datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
-            //         ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) && 
-            //             alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
-            //     })
-            
-            // // ES6 readable
-            // (currentGenderData && datesWithAlternateOpeningTimes ) && (
-            //     datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
-            //         ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) && (
-            //             alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes)
-            //         )
-                       
-            //     })
-            // )
-            
-            // // Normal
-            // if (currentGenderData && datesWithAlternateOpeningTimes) {
-            //         datesWithAlternateOpeningTimes.forEach((dateWithChangedOpeningTimes, i) => {
-            //             if ((momentDateToday <= dateWithChangedOpeningTimes.date) && (momentDateIn7Days > dateWithChangedOpeningTimes.date) && (dateWithChangedOpeningTimes.gender === currentGenderData.id)) {
-            //                 alternativeOpeningTimesThisWeek.push(dateWithChangedOpeningTimes);
-            //             }
-            //         });
-            // }
-            // return alternativeOpeningTimesThisWeek;
-        }
-
-        const setNewWeekCalendar = () => {
-            const alternativeOpeningTimesThisWeek = getAlternativeTimesForTheFollowing7Days();
-            if (alternativeOpeningTimesThisWeek.length > 0 ) {
-                if (currentGenderData) {
-                    const originalOpeningTimes = currentGenderData.openingTimes;
-                    return originalOpeningTimes.map(obj => alternativeOpeningTimesThisWeek.find(o => o.dayNumber === obj.dayNumber) || obj);
-                }
-            }
-            if (currentGenderData) {
-                return currentGenderData.openingTimes;
-            }
-        }
-
-		setWeekCalendar(setNewWeekCalendar());
-	}, [currentGenderData]);
+		setWeekCalendar(setNewWeekCalendar(genderDataForCalendar));
+	}, [genderDataForCalendar]);
 
 	return (
-		<ol>
+		<ol className={className}>
 			{weekCalendar && (
                 weekCalendar.map((day, index) => {
                     const dayUniqueKey = `DAY_${index}`;
 
                     return (
-                        <li 
+                        <OpeningTimesByDay
                             key={dayUniqueKey} 
-                            day={day.day}
                             className={(day.dayNumber === momentDayToday) ? 'today' : ''}
-                        >
-                            {day.dayName} | {day.open ? (
-                                day.openTime + ' - ' + day.closeTime
-                            ) : (
-                                'Closed'
-                            )}
-                            {day.date && ('*')}
-                        </li>
+                            timesAdjusted={(day.date) ? true : false}
+                            dayName={day.dayName}
+                            openTime={day.openTime}
+                            closeTime={day.closeTime}
+                            open={day.open}
+                        />
                     );
                 })
             )}
@@ -95,3 +66,4 @@ const WeeklyOpeningTimes = () => {
 };
 
 export default WeeklyOpeningTimes;
+

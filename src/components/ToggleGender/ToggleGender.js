@@ -1,16 +1,31 @@
 // External, react, library, etc imports
 import React, { useContext } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // Internal global, context, etc
-import { GenderContext } from '../genderContext/genderContext.js';
 import { GenderDataContext } from '../genderContext/genderDataContext.js';
 
 // Website, function/hooks, etc imports
 // NA ATM
 
-const ToggleGender = () => {
-	const { otherGenderData } = useContext(GenderDataContext);
-	const { currentGender, setCurrentGender } = useContext(GenderContext);
+const ToggleButton = styled.button`
+
+	&[data-element-type='a'] {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		outline: inherit;
+		text-decoration: underline;
+	}
+	
+`;
+
+const ToggleGender = ({children, elementType}) => {
+	const { otherGenderData, currentGender, setCurrentGender } = useContext(GenderDataContext);
 
 	const toggleGender = () => {
 		if (currentGender === 1) {
@@ -23,8 +38,25 @@ const ToggleGender = () => {
 	};
 
 	return (
-		<button onClick={toggleGender}>Show {otherGenderData.name} website</button>
+		<ToggleButton onClick={toggleGender} data-element-type={elementType}>
+			{children ? 
+				(children) : 
+				('Show ' + otherGenderData.name + ' website')
+			}
+		</ToggleButton>
 	);
 };
 
 export default ToggleGender;
+
+
+ToggleGender.defaultProps = {
+	elementType: 'button',
+	title: 'Toggle gender view',
+};
+
+ToggleGender.propTypes = {
+	elementType: PropTypes.string,
+	children: PropTypes.any,
+	title: PropTypes.string,
+};

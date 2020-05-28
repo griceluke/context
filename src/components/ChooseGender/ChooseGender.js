@@ -2,7 +2,6 @@
 import React, { useContext } from 'react';
 
 // Internal global, context, etc
-import { GenderContext } from '../genderContext/genderContext.js';
 import { GenderDataContext } from '../genderContext/genderDataContext.js';
 
 // Website, function/hooks, etc imports
@@ -10,8 +9,7 @@ import { GenderDataContext } from '../genderContext/genderDataContext.js';
 
 
 const ChooseGender = () => {
-	const { genderData } = useContext(GenderDataContext);
-	const { setCurrentGender } = useContext(GenderContext);
+	const { genderData, setCurrentGender } = useContext(GenderDataContext);
 
 	const setGender = e => {
 		let genderId = parseInt(e.target.getAttribute('data-id'));
@@ -23,7 +21,9 @@ const ChooseGender = () => {
 		<>
 			{genderData.map(gender => {
 				return (
-					<button key={gender.id} data-id={gender.id} onClick={setGender}>
+					<button key={gender.id} 
+							data-id={gender.id} 
+							onClick={setGender}>
 						{gender.nameCap}
 					</button>
 				);
