@@ -26,10 +26,10 @@ const Gender = styled.div`
 	}
 `;
 
-const Wrapper = styled.div`
+// const Wrapper = styled.div`
 
-	height: 100%;
-`;
+// 	height: 100%;
+// `;
 
 const ChooseGender = () => {
 	const { genderData, setCurrentGender } = useContext(GenderContext);
