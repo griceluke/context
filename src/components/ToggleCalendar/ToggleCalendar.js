@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext.js';
+import { GenderContext } from '../genderContext/genderContext.js';
 
 // Website, function/hooks, etc imports
 // NA ATM
@@ -31,7 +31,7 @@ const sortToggleButtonOrder = (currentGender, genderData) => {
 }
 
 const ToggleGender = ({genderData, genderDataForCalendar, setGenderForCalendar}) => {
-	const { currentGender } = useContext(GenderDataContext);
+	const { currentGender } = useContext(GenderContext);
 
 	const toggleGenderForCalendar = (e) => {
 		let genderId = parseInt(e.target.getAttribute('data-id'));

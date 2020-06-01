@@ -6,11 +6,16 @@ const pages = [
 		...HomeConfig,
 		exact: true,
 		component: HomePage,
+		navigationItem: true,
+		navigationChildren: {
+			toggleGenders: true
+		}
 	},
 	{
 		...ErrorConfig,
 		exact: false,
 		component: ErrorPage,
+		navigationItem: false,
 	},
 ];
 

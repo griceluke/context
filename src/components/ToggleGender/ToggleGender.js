@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext.js';
+import { GenderContext } from '../genderContext/genderContext.js';
 
 // Website, function/hooks, etc imports
 // NA ATM
@@ -25,7 +25,7 @@ const ToggleButton = styled.button`
 `;
 
 const ToggleGender = ({children, elementType}) => {
-	const { otherGenderData, currentGender, setCurrentGender } = useContext(GenderDataContext);
+	const { otherGenderData, currentGender, setCurrentGender } = useContext(GenderContext);
 
 	const toggleGender = () => {
 		if (currentGender === 1) {

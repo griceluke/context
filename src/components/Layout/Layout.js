@@ -3,10 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Internal global, context, etc
-// NA ATM
+
 
 // Website, function/hooks, etc imports
-// NA ATM
+import Navigation from '../Navigation';
+import pages from '../../pages';
 
 const Root = styled.div`
 	background: red;
@@ -35,8 +36,8 @@ function MainLayout({ children }) {
 	return (
 		<Root>
 			<ContentArea>
+				<Navigation navItems={pages}/>
 				<Main>{children}</Main>
-				{/* <Navigation navItems={}/> */}
 			</ContentArea>
 		</Root>
 	);

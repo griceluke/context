@@ -6,7 +6,7 @@ import React, { useState, useEffect, createContext } from 'react';
 // Website, function/hooks, etc imports
 import _genderData, { DEFAULT_GENDER } from './genderData';
 
-export const GenderDataContext = createContext();
+export const GenderContext = createContext();
 
 function getInitialGender(){
 	if (sessionStorage.getItem('localStateCurrentGender')) {
@@ -41,11 +41,11 @@ export const GenderDataProvider = ({ children }) => {
 	}, [genderData, currentGender]);
 
 	return (
-		<GenderDataContext.Provider
+		<GenderContext.Provider
 			value={{ currentGender, setCurrentGender, currentGenderData, otherGenderData, genderData }}
 		>
 			{children}
-		</GenderDataContext.Provider>
+		</GenderContext.Provider>
 	);
 };
 

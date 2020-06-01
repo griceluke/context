@@ -1,17 +1,12 @@
 // External, react, library, etc imports
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 
 // Internal global, context, etc
-// NA ATM
 
 // Website, function/hooks, etc imports
-// NA ATM
+import _genderData, { DEFAULT_GENDER } from './genderData';
 
-export const DEFAULT_GENDER = null;
-
-export const MALE_GENDER = 1;
-
-export const FEMALE_GENDER = 2;
+export const GenderContext = createContext();
 
 function getInitialGender(){
 	if (sessionStorage.getItem('localStateCurrentGender')) {
@@ -20,14 +15,38 @@ function getInitialGender(){
 	return DEFAULT_GENDER;
 }
 
-export const GenderContext = createContext();
-
-export const GenderProvider = ({ children }) => {
+export const GenderDataProvider = ({ children }) => {
+	const [genderData] = useState(_genderData);
+	
 	const [currentGender, setCurrentGender] = useState(getInitialGender());
+	const [currentGenderData, setCurrentGenderData] = useState({});
+	const [otherGenderData, setOtherGenderData] = useState({});
+
+	useEffect(() => {
+		
+		setOtherGenderData(function() {
+			for (let i = 0; i < genderData.length; i++) {
+				if (genderData[i].id !== currentGender) {
+					return genderData[i];
+				}
+			}
+		});
+		setCurrentGenderData(function() {
+			for (let i = 0; i < genderData.length; i++) {
+				if (genderData[i].id === currentGender) {
+					return genderData[i];
+				}
+			}
+		});
+	}, [genderData, currentGender]);
 
 	return (
-		<GenderContext.Provider value={{ currentGender, setCurrentGender }}>
+		<GenderContext.Provider
+			value={{ currentGender, setCurrentGender, currentGenderData, otherGenderData, genderData }}
+		>
 			{children}
 		</GenderContext.Provider>
 	);
 };
+
+

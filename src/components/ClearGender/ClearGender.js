@@ -6,14 +6,14 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext.js';
+import { GenderContext } from '../genderContext/genderContext.js';
 
 // Website, function/hooks, etc imports
 // NA ATM
 
 
 function ClearGender({ children, title }) {
-	const { setCurrentGender } = useContext(GenderDataContext);
+	const { setCurrentGender } = useContext(GenderContext);
 
 	const clear = () => {
 		setCurrentGender();

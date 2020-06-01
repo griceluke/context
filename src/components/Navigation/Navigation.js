@@ -12,12 +12,13 @@ import styled from 'styled-components';
 const Nav = styled.nav``;
 
 function Navigation({ navItems }) {
+	console.log(navItems)
 	return (
 		<Nav>
-			{navItems.map((navItem, index) => {
+			{/* {navItems.map((navItem, index) => {
 				const navItemUniqueKey = `NAV_ITEM_${index}`;
 				return <li key={navItemUniqueKey}>{navItem.name}</li>;
-			})}
+			})} */}
 		</Nav>
 	);
 }

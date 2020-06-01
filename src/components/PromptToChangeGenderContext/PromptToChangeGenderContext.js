@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext.js';
+import { GenderContext } from '../genderContext/genderContext.js';
 
 // Website, function/hooks, etc imports
 import ToggleGender from '../ToggleGender/index.js';
@@ -16,7 +16,7 @@ const Message = styled.div`
 `;
 
 const PromptToChangeGenderContext = ({genderDataForCalendar}) => {
-    const { currentGender, currentGenderData, otherGenderData } = useContext(GenderDataContext);
+    const { currentGender, currentGenderData, otherGenderData } = useContext(GenderContext);
 
     let genderDataIsDifferentToParentComponentData = false;
 

@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../../components/genderContext/genderDataContext';
+import { GenderContext } from '../../components/genderContext/genderContext';
 
 // Website, function/hooks, etc imports
 import ToggleGender from '../../components/ToggleGender';
@@ -10,7 +10,7 @@ import ClearGender from '../../components/ClearGender';
 import OpeningTimes from '../../components/OpeningTimes';
 
 function HomePage() {
-	const { currentGenderData } = useContext(GenderDataContext);
+	const { currentGenderData } = useContext(GenderContext);
 
 	return (
 		<>

@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Internal global, context, etc
-import { GenderDataProvider } from '../genderContext/genderDataContext';
+import { GenderDataProvider } from '../genderContext/genderContext';
 
 // Website, function/hooks, etc imports
 import SetScreens from '../SetScreens';

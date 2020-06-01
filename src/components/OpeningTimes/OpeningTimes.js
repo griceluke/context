@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 // import styled from 'styled-components';
 
 // Internal global, context, etc
-import { GenderDataContext } from '../genderContext/genderDataContext.js';
+import { GenderContext } from '../genderContext/genderContext.js';
 
 // Website, function/hooks, etc imports
 import ToggleCalendar from '../../components/ToggleCalendar';
@@ -17,7 +17,7 @@ const getNewGenderDataForCalendar = (genderData, genderForCalendar) => {
 };
 
 const OpeningTimes = () => {
-	const { currentGender, currentGenderData, genderData } = useContext(GenderDataContext);
+	const { currentGender, currentGenderData, genderData } = useContext(GenderContext);
 	const [genderForCalendar, setGenderForCalendar] = useState(currentGender);
 	const [genderDataForCalendar, setGenderDataForCalendar] = useState(currentGenderData);
 
