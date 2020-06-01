@@ -1,7 +1,0 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&display=swap');
-
-#root {
-    display: flex;
-    flex-flow: column;
-    height: 100vh;
-}
