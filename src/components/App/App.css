@@ -1,7 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&display=swap');
+/*      Cormorant Garamond SERIF 
+        - Serif font
+        - Variants: regular, bold
+
+        Raleway
+        - Sans serif font
+        - Variants: medium, bold
+
+        Biryani
+        - Serif title font
+        - Variants: regulal         */
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:regular,bold,italic&family=Raleway:medium:bold&family=Biryani:regular&display=swap');
 
 #root {
-    display: flex;
+    /* display: flex;
     flex-flow: column;
-    height: 100vh;
+    height: 100vh; */
 }

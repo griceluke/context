@@ -1,16 +1,17 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React from 'react';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
+import Link from '../../components/elements/Link';
 
-
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 
 
 function ErrorPage() {
 	return (
 		<>
-			<div>Error</div>
+			<div>404</div>
+			<Link to='/'>Take me home</Link>
 		</>
 	);
 }

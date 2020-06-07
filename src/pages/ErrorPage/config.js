@@ -1,3 +1,5 @@
 export default {
-	path: '*',
+	path: '/*',
+	pageName: 'ErrorPage',
+	navigationItem: false,
 };

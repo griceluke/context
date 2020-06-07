@@ -1,12 +1,12 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, {  useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import {CHANGED_OPENING_TIMES_DATA, OPENING_TIMES_HAVE_CHANGED_MESSAGE} from '../WeeklyOpeningTimes/data/changedOpeningTimes';
 import {momentDateToday, momentDateIn7Days} from '../../libraries/moment/moment';
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 // NA ATM
 
 const Message = styled.div`

@@ -1,18 +1,18 @@
 
 
 
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website, function/hooks, etc imports
-// NA ATM
+// Internal components, images, etc
+import Button from '../elements/Button';
 
 
-function ClearGender({ children, title }) {
+function ClearGender({ children, className, title, variant }) {
 	const { setCurrentGender } = useContext(GenderContext);
 
 	const clear = () => {
@@ -21,9 +21,9 @@ function ClearGender({ children, title }) {
 	};
 
 	return (
-		<button onClick={clear} title={title}>
+		<Button onClick={clear} className={className} title={title} variant={variant}>
 			{children}
-		</button>
+		</Button>
 	);
 }
 

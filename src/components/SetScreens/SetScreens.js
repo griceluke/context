@@ -1,11 +1,11 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 import '../App/App.css';
 import '../App/reset.css';
 import pages from '../../pages';
@@ -16,33 +16,32 @@ function SetScreens() {
 	const { currentGender } = useContext(GenderContext);
 
 	return (
-		<>
-			{currentGender ? (
-				<Router>
-					<Switch>
-						{pages.map((props, index) => {
-							const routeUniqueKey = `ROUTE_${index}`;
-							return (
-								<Route
-									key={routeUniqueKey}
-									exact={props.exact}
-									path={props.path}
-									component={routeProps => {
-										return (
-											<Layout {...routeProps} {...props}>
-												<props.component />
-											</Layout>
-										);
-									}}
-								/>
-							);
-						})}
-					</Switch>
-				</Router>
-			) : (
-				<ChooseGender />
-			)}
-		</>
+		<Router basename={process.env.PUBLIC_URL}>
+			<Switch>
+				{pages.map((props, index) => {
+					const routeUniqueKey = `ROUTE_${index}`;
+					return (
+						<Route
+							key={routeUniqueKey}
+							exact={props.exact}
+							path={props.path}
+							
+							component={routeProps => {
+								return (
+									<Layout {...routeProps} {...props}>
+										{((currentGender) || (props.pageName === 'ErrorPage')) ? (
+											<props.component />
+										) : (
+											<ChooseGender/>
+										)}
+									</Layout>
+								);
+							}}
+						/>
+					);
+				})}
+			</Switch>
+		</Router>
 	);
 }
 

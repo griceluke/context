@@ -1,43 +1,33 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React from 'react';
 import styled from 'styled-components';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 
-
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 import Navigation from '../Navigation';
-import pages from '../../pages';
+import Footer from '../Footer';
 
 const Root = styled.div`
 	background: red;
-	/* display: flex; */
 	font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 18px;
-	/* overflow: hidden; */
-	/* flex: 1; */
 `;
 
 const ContentArea = styled.div`
 	background: white;
-	/* flex-basis: 100%; */
-	/* margin: 50px; */
-	/* display: flex;
-    flex-direction: column; */
 `;
 
 const Main = styled.main`
-	/* height: 100vh; */
-	/* overflow: scroll;
-    white-space: nowrap; */
 `;
 
 function MainLayout({ children }) {
 	return (
 		<Root>
 			<ContentArea>
-				<Navigation navItems={pages}/>
+				<Navigation/>
 				<Main>{children}</Main>
+				<Footer/>
 			</ContentArea>
 		</Root>
 	);

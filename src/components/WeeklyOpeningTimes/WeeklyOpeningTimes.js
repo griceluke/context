@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react';
 
 // Internal global, context, etc
-import {CHANGED_OPENING_TIMES_DATA} from './data/changedOpeningTimes';
-import {momentDayToday, momentDateToday, momentDateIn7Days} from '../../libraries/moment/moment';
+import breakpoints from '../../styles/breakpoints';
+import { CHANGED_OPENING_TIMES_DATA } from './data/changedOpeningTimes';
+import { momentDayToday, momentDateToday, momentDateIn7Days } from '../../libraries/moment/moment';
+import useWindowSize from '../../hooks/useWindowSize';
 
 // Website, function/hooks, etc imports
 import OpeningTimesByDay from '../OpeningTimesByDay';
@@ -35,13 +37,20 @@ const setNewWeekCalendar = (genderDataForCalendar) => {
     }
 }
 
-const WeeklyOpeningTimes = ({genderDataForCalendar, className}) => {
+const WeeklyOpeningTimes = ({className, genderDataForCalendar}) => {
+    const { width: currentWidth } = useWindowSize();
+    const [width, setWidth] = useState(currentWidth);
+    const isMobile = width < breakpoints.navigation.up;
+    useEffect(() => {
+		if (currentWidth !== width) {
+			setWidth(currentWidth);
+		}
+    }, [currentWidth, width]);
+    
     const [weekCalendar, setWeekCalendar] = useState([]);
-
     useEffect(() => {
 		setWeekCalendar(setNewWeekCalendar(genderDataForCalendar));
-	}, [genderDataForCalendar]);
-
+    }, [genderDataForCalendar]);
 	return (
 		<ol className={className}>
 			{weekCalendar && (
@@ -53,10 +62,11 @@ const WeeklyOpeningTimes = ({genderDataForCalendar, className}) => {
                             key={dayUniqueKey} 
                             className={(day.dayNumber === momentDayToday) ? 'today' : ''}
                             timesAdjusted={(day.date) ? true : false}
-                            dayName={day.dayName}
+                            dayName={(isMobile) ? (day.dayName.substring(0, 3)) : (day.dayName)}
                             openTime={day.openTime}
                             closeTime={day.closeTime}
                             open={day.open}
+                            isMobile={isMobile}
                         />
                     );
                 })

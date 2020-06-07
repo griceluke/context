@@ -1,11 +1,11 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React from 'react';
 import styled from 'styled-components';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 // NA ATM
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 // NA ATM
 
 

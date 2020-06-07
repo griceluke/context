@@ -1,11 +1,12 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React from 'react';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderDataProvider } from '../genderContext/genderContext';
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 import SetScreens from '../SetScreens';
+
 import './App.css';
 import './reset.css';
 

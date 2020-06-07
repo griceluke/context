@@ -1,15 +1,15 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website, function/hooks, etc imports
-// NA ATM
+// Internal components, images, etc
+import Button from '../elements/Button';
 
-const ToggleButton = styled.button`
+const ToggleButton = styled(Button)`
 
 	&[data-element-type='a'] {
 		background: none;
@@ -24,7 +24,7 @@ const ToggleButton = styled.button`
 	
 `;
 
-const ToggleGender = ({children, elementType}) => {
+const ToggleGender = ({children, className, variant}) => {
 	const { otherGenderData, currentGender, setCurrentGender } = useContext(GenderContext);
 
 	const toggleGender = () => {
@@ -38,10 +38,10 @@ const ToggleGender = ({children, elementType}) => {
 	};
 
 	return (
-		<ToggleButton onClick={toggleGender} data-element-type={elementType}>
+		<ToggleButton onClick={toggleGender} className={className} variant={variant}>
 			{children ? 
 				(children) : 
-				('Show ' + otherGenderData.name + ' website')
+				(otherGenderData.nameCap + "'s website")
 			}
 		</ToggleButton>
 	);

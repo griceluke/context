@@ -1,11 +1,10 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useState, useEffect, useContext } from 'react';
-// import styled from 'styled-components';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 import ToggleCalendar from '../../components/ToggleCalendar';
 import OpeningTimesCalendar from '../../components/OpeningTimesCalendar';
 

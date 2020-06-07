@@ -48,3 +48,15 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+
+/* START Reset button styles -- Additional by L Grice */
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+/* END Reset button styles -- Additional by L Grice*/

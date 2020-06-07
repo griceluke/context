@@ -1,19 +1,25 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
-// Website, function/hooks, etc imports
-// NA ATM
+// Internal components, images, etc
+
 
 const ToggleButton = styled.button`
-    padding: .6rem 1rem;
-	background: lightgray;
-    border: 2px solid black;
+    padding: 1.3rem 1.4rem;
     position: relative;
-    top: 2px;
+	top: 2px;
+	
+	color: ${fonts.sans.color};
+	font-family: ${fonts.sans.fontFamily};
+	font-weight: ${fonts.sans.fontWeight.regular};
+	font-size: ${fonts.sans.fontSize};
+	line-height: ${fonts.sans.lineHeight};
 
 	&:first-of-type {
 		border-right: none;
@@ -21,7 +27,8 @@ const ToggleButton = styled.button`
 
 	&.active {
 		background: #fff;
-		border-bottom: 2px solid white;
+		border: 2px solid ${colors.grey[2]};
+		border-bottom: 2px solid ${colors.white};
 	}
 `;
 
@@ -36,6 +43,7 @@ const ToggleGender = ({genderData, genderDataForCalendar, setGenderForCalendar})
 	const toggleGenderForCalendar = (e) => {
 		let genderId = parseInt(e.target.getAttribute('data-id'));
 		setGenderForCalendar(genderId);
+		e.target.blur();
 	};
 
 	sortToggleButtonOrder(currentGender, genderData);

@@ -1,69 +1,84 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { Col, Row } from 'react-flexbox-grid';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 import { GenderContext } from '../genderContext/genderContext.js';
 
-// Website, function/hooks, etc imports
-// NA ATM
+// Internal components, images, etc
+import Container from '../../components/Container';
+// import Link from '../../components/elements/Link';
 
-const Gender = styled.div`
-	width: 100%;
-	min-height: 50vh;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-image: url(https://source.unsplash.com/random/1000x760);
-    background-size: cover;
-	cursor: pointer;
-	position: relative;
+const WrapperLink = styled.div`
+	display: block;
 
-	& span {
-		background: white;
-		padding: 10px;
+	& > * {
+		pointer-events: none;
 	}
 `;
 
-const Wrapper = styled.div`
+const TeamPhoto = styled.img`
+	width: 100%;
+`;
 
-	height: 100%;
+const Description = styled.div`
+	background: #f7f7f7;
+	margin-bottom: 40px;
+	padding: 1.2rem 1.3rem;
+	position: relative;
+	text-align: center;
+
+	::after {
+		background: repeating-linear-gradient( -40deg, #f7f7f7, #f7f7f7 10px, transparent 10px, transparent 24px );
+		bottom: -20px;
+		content: '';
+		display: block;
+		height: 20px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+`;
+
+const Subtitle = styled.span`
+	display: block;
+`;
+
+const Title = styled.span`
+	display: block;
 `;
 
 const ChooseGender = () => {
 	const { genderData, setCurrentGender } = useContext(GenderContext);
+	const path = window.location.pathname;
 
 	const setGender = e => {
 		let genderId = parseInt(e.target.getAttribute('data-id'));
 		setCurrentGender(genderId);
-		sessionStorage.setItem('localStateCurrentGender', genderId);
 	};
-	console.log(genderData[0].id);
 
 	return (
-		<>
-			{/* <Gender key={genderData[0].id} 
-					data-id={genderData[0].id} 
-					onClick={setGender}
-					role='button'>
-				<Wrapper data-id={genderData[0].id} onClick={setGender}>
-					<span onClick={setGender}
-						data-id={genderData[0].id}>
-						{genderData[0].gender}
-					</span>
-				</Wrapper>
-			</Gender> */}
-			{genderData.map(gender => {
-				return (
-					<Gender key={gender.id} 
-							data-id={gender.id} 
-							onClick={setGender}>
-						<span>{gender.nameCap}</span>
-					</Gender>
-				);
-			})}
-		</>
+		<Container>
+			<Row>
+				{genderData.map(gender => {
+					return (
+						<Col sm={12} md={6} key={gender.id}>
+							<WrapperLink 
+								data-id={gender.id} 
+								onClick={setGender}
+								to={path}>
+								<TeamPhoto src={gender.teamPhoto} />
+								<Description>
+									<Subtitle>{gender.jobTypeCap}</Subtitle>
+									<Title>{gender.nameFullCap}</Title>
+								</Description>
+							</WrapperLink>
+						</Col>
+					);
+				})}
+			</Row>
+		</Container>
 	);
 };
 

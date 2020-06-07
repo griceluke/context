@@ -1,18 +1,29 @@
-// External, react, library, etc imports
+// External imports, installed libraries, etc
 import React, { useState, useEffect, createContext } from 'react';
+import QueryString from 'query-string';
 
-// Internal global, context, etc
+// Internal data, functions, custom hooks, etc
 
-// Website, function/hooks, etc imports
+// Internal components, images, etc
 import _genderData, { DEFAULT_GENDER } from './genderData';
 
 export const GenderContext = createContext();
 
-function getInitialGender(){
-	if (sessionStorage.getItem('localStateCurrentGender')) {
+const getInitialGender = () => {
+	const queryStrings = QueryString.parse(window.location.search);
+	if ( queryStrings.gender ) {
+		return parseInt(queryStrings.gender);
+	}
+
+	else if ( sessionStorage.getItem('localStateCurrentGender') ) {
 		return parseInt(sessionStorage.getItem('localStateCurrentGender'));
 	}
+
 	return DEFAULT_GENDER;
+}
+
+const setSessionStorageGender = e => {
+	sessionStorage.setItem('localStateCurrentGender', e);
 }
 
 export const GenderDataProvider = ({ children }) => {
@@ -22,8 +33,7 @@ export const GenderDataProvider = ({ children }) => {
 	const [currentGenderData, setCurrentGenderData] = useState({});
 	const [otherGenderData, setOtherGenderData] = useState({});
 
-	useEffect(() => {
-		
+	useEffect(() => {	
 		setOtherGenderData(function() {
 			for (let i = 0; i < genderData.length; i++) {
 				if (genderData[i].id !== currentGender) {
@@ -34,6 +44,7 @@ export const GenderDataProvider = ({ children }) => {
 		setCurrentGenderData(function() {
 			for (let i = 0; i < genderData.length; i++) {
 				if (genderData[i].id === currentGender) {
+					setSessionStorageGender(genderData[i].id);
 					return genderData[i];
 				}
 			}
