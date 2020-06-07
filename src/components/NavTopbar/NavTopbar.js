@@ -73,7 +73,7 @@ const NavTopbar = ( {isMobile, navBottomHrStyle, navIsOpen, toggleNav} ) => {
 				</Left>
 				<Right>
 					<Address to='/contact'>
-						{currentGenderData.address && (
+						{(currentGenderData && currentGenderData.address) && (
 							currentGenderData.address.line1 +', '+ currentGenderData.address.town +', '+ currentGenderData.address.postCode
 						)}
 					</Address>

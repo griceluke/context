@@ -132,7 +132,7 @@ const Component = () => {
 									<FooterList>
 										<li>
 											<Address>
-												{currentGenderData.address && (
+												{(currentGenderData && currentGenderData.address) && (
 													currentGenderData.address.line1 +', '+ currentGenderData.address.town +', '+ currentGenderData.address.postCode
 												)}
 											</Address>

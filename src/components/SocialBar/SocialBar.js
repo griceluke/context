@@ -56,17 +56,19 @@ const Component = () => {
 				<Row>
 					<Col xs={12}>
 						<LogoIcon backgroundColor={colors.white} foregroundColor={colors.primary[0]}/>
-						{(currentGenderData.socials && currentGenderData.socials.length > 0) && (
-						<Right>
-							<SocialTitle>Follow us</SocialTitle>
-							{currentGenderData.socials.map((social, index) => {
-								return (
-									<a key={`SOCIAL_ITEM_`+index} href={social.link} title={social.platform + ' account - ' + social.account}>
-										{social.logo}
-									</a>
-								);
-							})}
-						</Right>
+						{currentGenderData && (
+							currentGenderData.socials && (
+								<Right>
+									<SocialTitle>Follow us</SocialTitle>
+									{currentGenderData.socials.map((social, index) => {
+										return (
+											<a key={`SOCIAL_ITEM_`+index} href={social.link} title={social.platform + ' account - ' + social.account}>
+												{social.logo}
+											</a>
+										);
+									})}
+								</Right>
+							)
 						)}
 					</Col>
 				</Row>
