@@ -9,14 +9,13 @@ import breakpoints from '../../styles/breakpoints';
 // Internal components, images, etc
 // NA ATM
 
-
-
-
-
 const Grid = styled(_Grid)`
+	padding: 0 12px;
+
 	@media (min-width: ${breakpoints.smUp}px) {
-		padding: 0 1.75em;
+		padding: 0 1.5em;
 	}
+
 	@media (min-width: ${breakpoints.mdUp}px) {
 		padding: 0 2.25em;
 	}

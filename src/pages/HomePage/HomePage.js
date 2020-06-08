@@ -6,6 +6,7 @@ import { Col, Row } from 'react-flexbox-grid';
 // Internal data, functions, custom hooks, etc
 import { GenderContext } from '../../components/genderContext/genderContext';
 import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 import breakpoints from '../../styles/breakpoints';
 
 // Internal components, images, etc
@@ -35,8 +36,9 @@ const LogoIcon = styled(_LogoIcon)`
 
 const IntroductionaryTitle = styled.div`
 	color: ${colors.grey[4]};
+	font-family: ${fonts.bespoke.fontFamily};
 	font-size: 2.2rem;
-	font-weight: bold;
+	font-weight: ${fonts.bespoke.fontWeight.regular};
 	margin-bottom: 1rem;
 	text-transform: uppercase;
 

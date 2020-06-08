@@ -21,7 +21,7 @@ const ButtonStyles = styled.div`
 		color: ${colors.white};
 	`)}
 	font-family: ${fonts.bespoke.fontFamily};
-	font-weight: ${fonts.bespoke.fontWeight};
+	font-weight: ${fonts.bespoke.fontWeight.regular};
 	margin-bottom: ${props => props.marginBottom && props.marginBottom+ 'rem'};
 	padding: .9rem 1rem;
 	text-align: center;

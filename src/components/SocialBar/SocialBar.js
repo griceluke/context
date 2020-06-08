@@ -63,7 +63,7 @@ const Component = () => {
 									{currentGenderData.socials.map((social, index) => {
 										return (
 											<a key={`SOCIAL_ITEM_`+index} href={social.link} title={social.platform + ' account - ' + social.account}>
-												{social.logo}
+												<social.logo/>
 											</a>
 										);
 									})}
