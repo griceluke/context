@@ -4,21 +4,25 @@
 // Internal data, functions, custom hooks, etc
 import {OPENING_TIMES_GENDER_1_DATA, OPENING_TIMES_GENDER_2_DATA} from '../WeeklyOpeningTimes/data/openingTimes';
 import {SOCIALS_GENDER_1_DATA, SOCIALS_GENDER_2_DATA} from '../SocialBar/data/socialAccounts';
+import {SERVICES_GENDER_1_DATA, SERVICES_GENDER_2_DATA} from '../Services/data/services';
 
 // Internal components, images, etc
 import GentsTeam from '../../images/gents-team.jpg';
 import LadiesTeam from '../../images/ladies-team.jpg';
 
-export const DEFAULT_GENDER = null;
-
 export const MALE_GENDER = 1;
 
 export const FEMALE_GENDER = 2;
 
-const address = {
-    line1: '12 Bethel Street',
-    town: 'Brighouse',
-    postCode: 'HD6 1JN',
+export const DEFAULT_DETAILS = {
+    id: 0,
+    gender: null,
+    address: {
+        line1: '12 Bethel Street',
+        town: 'Brighouse',
+        postCode: 'HD6 1JN',
+    },
+    phoneNumber: '01‪484715063'
 };
 
 export default [
@@ -35,8 +39,9 @@ export default [
     phoneNumber: '01‪484715063',
     teamPhoto: GentsTeam,
     openingTimes: OPENING_TIMES_GENDER_1_DATA,
+    services: SERVICES_GENDER_1_DATA,
     socials: SOCIALS_GENDER_1_DATA,
-    address,
+    address: DEFAULT_DETAILS.address,
     },
     {
         id: 2,
@@ -51,7 +56,8 @@ export default [
         phoneNumber: '01‪484721774',
         teamPhoto: LadiesTeam,
         openingTimes: OPENING_TIMES_GENDER_2_DATA,
+        services: SERVICES_GENDER_2_DATA,
         socials: SOCIALS_GENDER_2_DATA,
-        address,
+        address: DEFAULT_DETAILS.address,
     }
 ]

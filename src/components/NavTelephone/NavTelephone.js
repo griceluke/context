@@ -8,9 +8,10 @@ import fonts from '../../styles/fonts';
 import colors from '../../styles/colors';
 
 // Internal components, images, etc
+import Anchor from '../elements/Anchor';
 import PhoneIcon from '../assets/PhoneIcon';
 
-const Link = styled.a`
+const A = styled(Anchor)`
 	color: ${colors.primary[0]};
 	font-size: .85em;
 	font-weight: ${fonts.sans.fontWeight.regular};
@@ -38,12 +39,12 @@ const Span = styled.span`
 const NavTelephone = ({ children, isMobile, href, title, className }) => {
 	const iconSize = isMobile ? 30 : 20;
 	return (
-		<Link className={className} href={href} title={title}>
+		<A className={className} href={href} title={title}>
 			<PhoneIcon height={iconSize} width={iconSize}/>
 			{!isMobile && (
 				<Span>{children}</Span>
 			)}	
-		</Link>
+		</A>
 	);
 }
 
@@ -58,5 +59,8 @@ NavTelephone.propTypes = {
 	isMobile: PropTypes.bool.isRequired,
 	href: PropTypes.string.isRequired,
 	title: PropTypes.string,
-	children: PropTypes.string,
+	children: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.arrayOf(PropTypes.string)
+	  ]),
 };

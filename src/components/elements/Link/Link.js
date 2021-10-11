@@ -8,33 +8,27 @@ import PropTypes from 'prop-types';
 import colors from '../../../styles/colors';
 
 // Internal components, images, etc
-// NA ATM
+import { AnchorStyles } from '../Anchor';
+import { ButtonStyles } from '../Button';
 
-
-const A = styled(Link)`
-	color: ${colors.primary[0]};
-	display: inline-block;
-	font-weight: bold;
-	text-decoration: none;
-	transition: background-color 0.3s, margin 0.3s;
-	position: relative;
-
-	&:hover {
-		color: ${colors.primary.dark};
-		text-decoration: underline;
-	}
-
-	&:focus {
-		color: ${colors.primary.dark};
-		text-decoration: underline;
-	}
+const LinkComponent = styled(Link)`
+	${props => props.styleas === 'button' && ButtonStyles};
+	${props => props.styleas === 'link' && AnchorStyles};
 `;
 
-const Component = ({ className, to, title, target, children, onClick }) => {
+const Component = ({ children, className, styleas, to, title, onClick, fontFamily, marginbottom, color, variant }) => {
 	return (
-		<A className={className} to={to} target={target} title={title} onClick={onClick}>
+		<LinkComponent className={className} 
+					   styleas={styleas}	
+					   to={to} 
+					   title={title} 
+					   onClick={onClick} 
+					   fontFamily={fontFamily}
+					   marginbottom={marginbottom} 
+					   color={color}
+					   variant={variant}>
 			{children}
-		</A>
+		</LinkComponent>
 	);
 }
 
@@ -42,12 +36,18 @@ export default Component;
 
 Component.defaultProps = {
 	to: '#',
+	fontFamily: 'sans',
+	styleas: 'link',
+	color: colors.primary[0],
 };
 
 Component.propTypes = {
+	children: PropTypes.any,
+	styleas: PropTypes.oneOf(['link', 'button']),
 	to: PropTypes.string.isRequired,
 	title: PropTypes.string,
-	target: PropTypes.string,
-	children: PropTypes.any,
-	className: PropTypes.string,
+	fontFamily: PropTypes.oneOf(['sans', 'serif']),
+	marginbottom: PropTypes.number,
+	color: PropTypes.string,
+	variant: PropTypes.oneOf(['secondary', 'primary']),
 };

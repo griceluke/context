@@ -11,9 +11,9 @@ import breakpoints from '../../styles/breakpoints';
 
 const Grid = styled(_Grid)`
 	padding: 0 12px;
-
 	@media (min-width: ${breakpoints.smUp}px) {
 		padding: 0 1.5em;
+		width: ${props => props.width}px;
 	}
 
 	@media (min-width: ${breakpoints.mdUp}px) {

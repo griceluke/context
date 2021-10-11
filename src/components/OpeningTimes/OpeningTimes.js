@@ -5,7 +5,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { GenderContext } from '../genderContext/genderContext.js';
 
 // Internal components, images, etc
-import ToggleCalendar from '../../components/ToggleCalendar';
+import ToggleOpeningTimesCalendar from '../ToggleOpeningTimesCalendar';
 import OpeningTimesCalendar from '../../components/OpeningTimesCalendar';
 
 const getNewGenderDataForCalendar = (genderData, genderForCalendar) => {	
@@ -26,7 +26,7 @@ const OpeningTimes = () => {
 
 	return (
 		<>
-			<ToggleCalendar 
+			<ToggleOpeningTimesCalendar 
 				genderData={genderData} 
 				genderDataForCalendar={genderDataForCalendar}
 				setGenderForCalendar={setGenderForCalendar}/>

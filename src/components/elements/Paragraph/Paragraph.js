@@ -13,17 +13,19 @@ import fonts from '../../../styles/fonts';
 
 const Paragraph = styled.p`
 	color: ${(props) => (fonts[props.variant].color)};
-	color: ${props => props.color || colors.color};
+	color: ${(props) => props.color || colors.color};
 	font-family: ${(props) => (fonts[props.variant].fontFamily)};
 	font-weight: ${(props) => (fonts[props.variant].fontWeight.regular)};
 	font-size: ${(props) => (fonts[props.variant].fontSize)};
 	line-height: ${(props) => (fonts[props.variant].lineHeight)};
-	margin-bottom: 1.25em;
+	margin-bottom: ${(props) => (props.marginbottom) ? (props.marginbottom+'em'): ('1.25em')};
+	margin-bottom: ${(props) => (props.marginbottom) && (props.marginbottom) + 'rem'};
+	text-align: ${(props) => (props.textalign)};
 `;
 
-const Component = ({ className, children, color, variant }) => {
+const Component = ({ className, children, color, variant, marginbottom, textalign }) => {
 	return (
-		<Paragraph color={color} className={className} variant={variant}>
+		<Paragraph color={color} className={className} variant={variant} marginbottom={marginbottom} textalign={textalign}>
 			{children}
 		</Paragraph>
 	);
@@ -36,5 +38,5 @@ Component.defaultProps = {
 };
 
 Component.propTypes = {
-	variant: PropTypes.string,
+	variant: PropTypes.oneOf(['sans', 'serif']),
 };

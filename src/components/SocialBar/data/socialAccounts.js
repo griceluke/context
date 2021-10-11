@@ -1,4 +1,5 @@
 import Instagram from '../../assets/InstagramIcon';
+import Facebook from '../../assets/FacebookIcon';
 
 export const SOCIALS_GENDER_1_DATA = [
     {
@@ -20,6 +21,6 @@ export const SOCIALS_GENDER_2_DATA = [
         platform: 'Facebook',
         account: 'taylorscohair',
         link: '//www.facebook.com/taylorscohair',
-        logo: Instagram,
+        logo: Facebook,
     }
 ]

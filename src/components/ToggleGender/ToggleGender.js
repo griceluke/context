@@ -7,24 +7,15 @@ import PropTypes from 'prop-types';
 import { GenderContext } from '../genderContext/genderContext.js';
 
 // Internal components, images, etc
-import Button from '../elements/Button';
+import { AnchorStyles } from '../elements/Anchor';
+import { ButtonStyles } from '../elements/Button';
 
-const ToggleButton = styled(Button)`
-
-	&[data-element-type='a'] {
-		background: none;
-		color: inherit;
-		border: none;
-		padding: 0;
-		font: inherit;
-		cursor: pointer;
-		outline: inherit;
-		text-decoration: underline;
-	}
-	
+const StyledSpan = styled.span`
+	${props => props.styleas === 'button' && ButtonStyles};
+	${props => props.styleas === 'link' && AnchorStyles};
 `;
 
-const ToggleGender = ({children, className, variant}) => {
+const ToggleGender = ({children, className, styleas, marginbottom, variant}) => {
 	const { otherGenderData, currentGender, setCurrentGender } = useContext(GenderContext);
 
 	const toggleGender = () => {
@@ -35,15 +26,21 @@ const ToggleGender = ({children, className, variant}) => {
 			setCurrentGender(1);
 			sessionStorage.setItem('localStateCurrentGender', 1);
 		}
+		window.scrollTo(0,0);
 	};
 
 	return (
-		<ToggleButton onClick={toggleGender} className={className} variant={variant}>
+		<StyledSpan className={className} 
+					styleas={styleas}
+					marginbottom={marginbottom} 
+					variant={variant}
+					onClick={toggleGender}
+					tabIndex={0}>
 			{children ? 
 				(children) : 
-				(otherGenderData.nameCap + "'s website")
+				(otherGenderData.nameCap + " website")
 			}
-		</ToggleButton>
+		</StyledSpan>
 	);
 };
 
@@ -51,12 +48,11 @@ export default ToggleGender;
 
 
 ToggleGender.defaultProps = {
-	elementType: 'button',
+	styleas: 'button',
 	title: 'Toggle gender view',
 };
 
 ToggleGender.propTypes = {
-	elementType: PropTypes.string,
 	children: PropTypes.any,
 	title: PropTypes.string,
 };

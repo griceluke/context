@@ -50,7 +50,8 @@ const NavToggle = ({isMobile, navIsOpen, toggleNav}) => {
 		<NavToggleIcon navIsOpen={navIsOpen} 
 					   onClick={toggleNav}
 					   title={navIsOpen ? ('close menu') : ('open menu')} 
-					   role='button'>
+					   role='button'
+					   tabIndex={0}>
 			<div></div>
 			<div></div>
 		</NavToggleIcon>

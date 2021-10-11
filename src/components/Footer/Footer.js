@@ -9,6 +9,7 @@ import navigationConfig from '../Navigation/config';
 import breakpoints from '../../styles/breakpoints';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import useSplitTelephoneNumber from '../../hooks/useSplitTelephoneNumber';
 
 // Internal components, images, etc
 import SocialBar from '../SocialBar';
@@ -16,6 +17,7 @@ import Container from '../Container';
 import ToggleGender from '../../components/ToggleGender';
 import LogoIcon from '../assets/LogoIcon';
 import Link from '../elements/Link';
+import Anchor from '../elements/Anchor';
 
 const Footer = styled.footer`
 	color: ${colors.grey[7]};
@@ -27,6 +29,12 @@ const Footer = styled.footer`
 const FooterMain = styled.div`
 	background: ${colors.grey[1]};
 	padding: 4rem 0;
+`;
+
+const FooterCol = styled(Col)`
+	@media (max-width: ${breakpoints.mdDown}px) {
+		margin-bottom: 2rem;
+	}
 `;
 
 const Address = styled.span`
@@ -41,10 +49,6 @@ const FooterTitle = styled.span`
 `;
 
 const FooterList = styled.ul`
-	@media (max-width: ${breakpoints.mdDown}px) {
-		margin-bottom: 2rem;
-	}
-
 	li {
 		margin-bottom: 1em;
 	}
@@ -59,8 +63,16 @@ const NavItem = styled(Link)`
 	}
 `;  
 
+const NavItemToggleGender = styled(ToggleGender)`
+	color: ${colors.grey[7]};
+	font-weight: ${fonts.sans.fontWeight.regular};
 
-const Telephone = styled.a`
+	&:hover {
+		color: ${colors.grey[9]};
+	}
+`;
+
+const Telephone = styled(Anchor)`
 	color: ${colors.grey[7]};
 	font-weight: ${fonts.sans.fontWeight.bold};
 	text-decoration: none;
@@ -71,7 +83,7 @@ const Telephone = styled.a`
 	}
 `;
 
-const CopyrightCol = styled(Col)`
+const CopyrightCol = styled(FooterCol)`
 	text-align: center;
 `;
 
@@ -102,6 +114,7 @@ const DesignedBy = styled.div`
 
 const Component = () => {	
 	const { currentGenderData } = useContext(GenderContext);
+
 	return (
 		<Footer>
 			<SocialBar/>
@@ -110,7 +123,7 @@ const Component = () => {
 					<Row>
 						<Col xs={12} md={10} style={{margin: 'auto'}}>
 							<Row>
-								<Col xs={12} lg={3}>
+								<FooterCol xs={12} md={6} lg={3}>
 									<FooterTitle>Taylors online</FooterTitle>
 									<FooterList>
 										{navigationConfig.pages.map((navItem, index) => {
@@ -124,28 +137,30 @@ const Component = () => {
 												)
 											);
 										})}
-										<li><ToggleGender/></li>
+										{currentGenderData.gender && (
+											<li><NavItemToggleGender styleas={'link'}/></li>
+										)}
 									</FooterList>
-								</Col>
-								<Col xs={12} lg={6}>
+								</FooterCol>
+								<FooterCol xs={12} md={6} lg={6}>
 									<FooterTitle>Taylors &amp; Co.</FooterTitle>
 									<FooterList>
 										<li>
 											<Address>
 												{(currentGenderData && currentGenderData.address) && (
-													currentGenderData.address.line1 +', '+ currentGenderData.address.town +', '+ currentGenderData.address.postCode
-												)}
+													currentGenderData.address.line1 +', '+ currentGenderData.address.town +', '+ currentGenderData.address.postCode)}
+												
 											</Address>
 										</li>
-										<li><Telephone href={'tel:01484715063'}>01484 715063</Telephone></li>
+										<li><Telephone href={'tel:01484715063'}>{useSplitTelephoneNumber(currentGenderData.phoneNumber)}</Telephone></li>
 									</FooterList>
-								</Col>
+								</FooterCol>
 								<CopyrightCol xs={12} lg={3}>
 									<FooterLogo width={20} height={20} backgroundColor={colors.primary[0]} foregroundColor={colors.grey[1]}/>
 									<Copyright>Copyright {(new Date().getFullYear())}</Copyright>
 									<DesignedBy>
 										<span>Website by: </span>
-										<a href="//www.halunadigital.com" target="_blank" rel="noopener noreferrer">Haluna Digital</a>
+										<Anchor href="//www.halunadigital.com">Haluna Digital</Anchor>
 									</DesignedBy>
 								</CopyrightCol>
 							</Row>

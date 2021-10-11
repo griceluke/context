@@ -6,7 +6,7 @@ export default {
         letterSpacing: 0,
         lineHeight: '1.6em',
         fontFamily: '"Cormorant Garamond", "Times New Roman", Times, serif',
-        fontSize: '',
+        fontSize: '1.1em',
         fontWeight: {
             regular: 400,
             bold: 700
@@ -17,7 +17,7 @@ export default {
         letterSpacing: 0,
         lineHeight: '1.9em',
         fontFamily: '"Raleway", "Segoe UI",Tahoma,Geneva,Verdana,sans-serif',
-        fontSize: '.9em',
+        fontSize: '1em',
         fontWeight: {
             regular: 500,
             semiBold: 600,
@@ -29,7 +29,7 @@ export default {
         letterSpacing: 0,
         lineHeight: '',
         fontFamily: '"Biryani", "Raleway", "Segoe UI",Tahoma,Geneva,Verdana,sans-serif',
-        fontSize: '',
+        fontSize: '1em',
         fontWeight: {
             regular: 700,
         },

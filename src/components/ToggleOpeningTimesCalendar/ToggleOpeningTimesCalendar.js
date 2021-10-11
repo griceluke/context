@@ -11,7 +11,7 @@ import fonts from '../../styles/fonts';
 
 
 const ToggleButton = styled.button`
-    padding: 1.3rem 1.4rem;
+    padding: .8rem 1.4rem;
     position: relative;
 	top: 2px;
 	

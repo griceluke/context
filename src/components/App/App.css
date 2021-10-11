@@ -11,8 +11,6 @@
         - Variants: regulal         */
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:regular,bold,italic&family=Raleway:medium:bold&family=Biryani:regular&display=swap');
 
-#root {
-    /* display: flex;
-    flex-flow: column;
-    height: 100vh; */
+* {
+    font-size: .9em;
 }

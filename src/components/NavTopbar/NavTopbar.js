@@ -7,6 +7,7 @@ import { GenderContext } from '../../components/genderContext/genderContext';
 import navigationConfig from '../Navigation/config';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import useSplitTelephoneNumber from '../../hooks/useSplitTelephoneNumber';
 
 // Internal components, images, etc
 import Logo from '../assets/LogoIcon';
@@ -52,6 +53,7 @@ const Right = styled.div`
 
 const NavTopbar = ( {isMobile, navBottomHrStyle, navIsOpen, toggleNav} ) => {
 	const { currentGenderData } = useContext(GenderContext);
+	const tel = useSplitTelephoneNumber(currentGenderData.phoneNumber);
 
 	return (
 		isMobile ? (
@@ -62,14 +64,14 @@ const NavTopbar = ( {isMobile, navBottomHrStyle, navIsOpen, toggleNav} ) => {
 					</Link>
 				</Left>
 				<Right>
-					<NavTelephone isMobile={isMobile} title={'Call us on 01484 715063'} href={'tel:01484715063'}/>
+					<NavTelephone isMobile={isMobile} title={'Call us on '+currentGenderData.phoneNumber} href={'tel:'+currentGenderData.phoneNumber}/>
 					<NavToggle isMobile={isMobile} navIsOpen={navIsOpen} toggleNav={toggleNav}/>
 				</Right>
 			</TopBar>
 		) : (
 			<TopBar>
 				<Left>
-					<NavTelephone isMobile={isMobile} href={'tel:01484715063'}>Call us: 01484 715063</NavTelephone>
+					<NavTelephone isMobile={isMobile} href={'tel:01484715063'}>Call us: {tel}</NavTelephone>
 				</Left>
 				<Right>
 					<Address to='/contact'>

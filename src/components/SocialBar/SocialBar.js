@@ -12,6 +12,7 @@ import fonts from '../../styles/fonts';
 // Internal components, images, etc
 import Container from '../Container';
 import LogoIcon from '../assets/LogoIcon';
+import Anchor from '../elements/Anchor';
 
 const SocialBar = styled.div`
 	background: ${colors.primary[0]};
@@ -47,6 +48,10 @@ const SocialTitle = styled.span`
 	font-weight: ${fonts.bespoke.fontWeight.regular};
 `;
 
+const SocialLink = styled(Anchor)`
+	margin-left: .5rem;
+`;
+
 const Component = () => {	
 	const { currentGenderData } = useContext(GenderContext);
 
@@ -62,9 +67,9 @@ const Component = () => {
 									<SocialTitle>Follow us</SocialTitle>
 									{currentGenderData.socials.map((social, index) => {
 										return (
-											<a key={`SOCIAL_ITEM_`+index} href={social.link} title={social.platform + ' account - ' + social.account}>
+											<SocialLink key={`SOCIAL_ITEM_`+index} href={social.link} title={social.platform + ' account - ' + social.account}>
 												<social.logo/>
-											</a>
+											</SocialLink>
 										);
 									})}
 								</Right>

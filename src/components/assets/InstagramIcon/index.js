@@ -1,1 +1,1 @@
-export { default } from './InstagramIcon';
+export { default } from './FacebookIcon';
